@@ -1,0 +1,47 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.box {
+  position: relative;
+  width: min(92vw, 960px);
+  max-height: min(90vh, 820px);
+  background: #0b0b0b;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px 10px;
+  z-index: 2;
+}
+
+.content {
+  display: grid;
+  place-items: center;
+  padding: 12px;
+}
+
+.content img,
+.content video {
+  max-width: 100%;
+  max-height: calc(90vh - 80px);
+  object-fit: contain;
+  border-radius: 8px;
+}
