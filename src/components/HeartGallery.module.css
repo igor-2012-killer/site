@@ -1,35 +1,55 @@
-.wrapper {
+.container {
+  position: relative;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
 }
 
-.grid {
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.gallery {
+  position: absolute;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  gap: 4px;
-
-  width: min(90vmin, 90vh);
-  height: min(90vmin, 90vh);
+  gap: 1px;
+  z-index: 2;
+  pointer-events: none;
+  width: 50vmin;
+  height: 50vmin;
 }
 
 .cell, .empty {
   width: 100%;
   height: 100%;
+  pointer-events: auto;
+  box-sizing: border-box;
 }
 
 .cell {
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   opacity: 0;
   transform: scale(0.5);
   animation: fadeIn 0.4s forwards;
+  transition: transform 0.3s ease;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.cell img, .cell video {
+.cell:hover {
+  transform: scale(1.05) !important;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.media {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -37,8 +57,8 @@
   transition: transform 0.3s ease;
 }
 
-.cell:hover img, .cell:hover video {
-  transform: scale(1.1);
+.cell:hover .media {
+  transform: scale(1.05);
 }
 
 .empty {
